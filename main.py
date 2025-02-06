@@ -52,8 +52,8 @@ def predict_with_lstm(data):
 def main():
     # 初始化客户端
     three_commas_client = ThreeCommasClient(
-        os.getenv('3COMMAS_API_KEY'),
-        os.getenv('3COMMAS_API_SECRET')
+        os.getenv('COMMAS_API_KEY'),
+        os.getenv('COMMAS_API_SECRET')
     )
     okx_client = OKXClient(
         os.getenv('OKX_API_KEY'),
