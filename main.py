@@ -48,7 +48,7 @@ class ThreeCommasClient:
 class OKXClient:
     def __init__(self, api_key, api_secret):
         self.base_url = "https://www.okx.com/api/v5"
-        self.headers = {'OK-ACCESS-KEY': api_key, 'OK-ACCESS-SECRET': api_secret}
+        self.headers = {'OK_ACCESS_KEY': api_key, 'OK_ACCESS_SECRET': api_secret}
 
     def get_historical_data(self, symbol='SOL-USDT', timeframe='1H', limit=1000):
         params = {'instId': symbol, 'bar': timeframe, 'limit': limit}
