@@ -6,9 +6,24 @@ from tensorflow.keras.models import load_model
 import joblib
 import os
 
-# 加载预训练模型和Scaler
-model = load_model('lstm_model.h5')
-scaler = joblib.load('scaler.pkl')
+# 下载文件
+def download_file(url, local_path):
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(local_path, 'wb') as f:
+            f.write(response.content)
+        print(f"Downloaded {local_path} successfully.")
+    else:
+        print(f"Failed to download {local_path}.")
+
+# 下载模型和Scaler
+def download_model_and_scaler():
+    model_url = "https://lstm-1341307484.cos.ap-shanghai.myqcloud.com/lstm_model.h5"
+    scaler_url = "https://lstm-1341307484.cos.ap-shanghai.myqcloud.com/scaler.pkl"
+    
+    # 下载文件
+    download_file(model_url, 'lstm_model.h5')
+    download_file(scaler_url, 'scaler.pkl')
 
 # 3Commas API 客户端
 class ThreeCommasClient:
@@ -50,6 +65,13 @@ def predict_with_lstm(data):
 
 # 主逻辑
 def main():
+    # 下载模型和Scaler
+    download_model_and_scaler()
+
+    # 加载预训练模型和Scaler
+    model = load_model('lstm_model.h5')
+    scaler = joblib.load('scaler.pkl')
+
     # 初始化客户端
     three_commas_client = ThreeCommasClient(
         os.getenv('COMMAS_API_KEY'),
@@ -83,3 +105,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
