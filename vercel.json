@@ -15,6 +15,10 @@
     }
   ],
   "env": {
-    "PYTHON_VERSION": "3.9"
+    "PYTHON_VERSION": "3.9",
+    "COMMAS_API_KEY": "your_commas_api_key",
+    "COMMAS_API_SECRET": "your_commas_api_secret",
+    "OKX_API_KEY": "your_okx_api_key",
+    "OKX_API_SECRET": "your_okx_api_secret"
   }
 }
