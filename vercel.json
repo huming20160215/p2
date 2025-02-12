@@ -4,21 +4,14 @@
       "src": "main.py",
       "use": "@vercel/python",
       "config": {
-        "pythonVersion": "3.9"
+        "pythonVersion": "3.9",
+        "maxLambdaSize": "300mb",  // 显式设置上限
+        "includeFiles": ["main.py"]  // 仅部署必要文件
       }
     }
   ],
   "routes": [
-    {
-      "src": "(.*)",
-      "dest": "main.py"
-    }
-  ],
-  "env": {
-    "PYTHON_VERSION": "3.9",
-    "COMMAS_API_KEY": "your_commas_api_key",
-    "COMMAS_API_SECRET": "your_commas_api_secret",
-    "OKX_API_KEY": "your_okx_api_key",
-    "OKX_API_SECRET": "your_okx_api_secret"
-  }
+    { "src": "(.*)", "dest": "main.py" }
+  ]
 }
+
