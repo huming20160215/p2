@@ -6,7 +6,7 @@
       "config": {
         "pythonVersion": "3.9",
         "maxLambdaSize": "300mb",
-        "installCommand": "pip install --upgrade pip setuptools wheel && pip install -r requirements.txt"
+        "includeFiles": ["main.py", "requirements.txt"]
       }
     }
   ],
