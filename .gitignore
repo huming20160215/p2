@@ -1,0 +1,4 @@
+# 忽略大文件
+lstm_model.h5
+scaler.pkl
+
