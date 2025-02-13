@@ -1,0 +1,9 @@
+# .vercelignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.git/
+.vscode/
+.idea/
