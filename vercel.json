@@ -5,13 +5,16 @@
       "use": "@vercel/python",
       "config": {
         "pythonVersion": "3.9",
-        "maxLambdaSize": "300mb",  // 显式设置上限
-        "includeFiles": ["main.py"]  // 仅部署必要文件
+        "maxLambdaSize": "300mb",
+        "includeFiles": ["main.py"]
       }
     }
   ],
   "routes": [
-    { "src": "(.*)", "dest": "main.py" }
+    {
+      "src": "(.*)",
+      "dest": "main.py"
+    }
   ]
 }
 
