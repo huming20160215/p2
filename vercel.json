@@ -5,15 +5,13 @@
       "use": "@vercel/python",
       "config": {
         "pythonVersion": "3.9",
-        "maxLambdaSize": "500mb",
-        "includeFiles": ["main.py"]
+        "maxLambdaSize": "300mb",
+        "includeFiles": ["main.py", "requirements.txt"]
       }
     }
   ],
   "routes": [
-    {
-      "src": "(.*)",
-      "dest": "main.py"
-    }
+    { "src": "(.*)", "dest": "main.py" }
   ]
 }
+
