@@ -7,3 +7,5 @@ venv/
 .git/
 .vscode/
 .idea/
+lstm_model.h5  # 明确排除
+scaler.pkl     # 明确排除
