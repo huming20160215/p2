@@ -4,7 +4,8 @@
       "src": "main.py",
       "use": "@vercel/python",
       "config": {
-        "pythonVersion": "3.12"
+        "pythonVersion": "3.12",
+        "includeFiles": ["main.py", "requirements.txt"]  // 明确指定仅包含必要文件
       }
     }
   ],
