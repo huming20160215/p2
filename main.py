@@ -55,7 +55,7 @@ class OKXClient:
         return response.json()['data'] if response.status_code == 200 else None
 
 # 使用 LSTM 模型预测价格
-def predict_with_lstm(data):
+def predict_with_lstm(data, model, scaler):
     last_60 = data['close'].values[-60:].reshape(-1, 1)
     scaled_data = scaler.transform(last_60)
     predicted_price = model.predict(scaled_data.reshape(1, 60, 1))
@@ -93,7 +93,7 @@ def main():
     df['close'] = df['close'].astype(float)  # 确保 close 列是浮点数
 
     # 预测价格
-    predicted_price = predict_with_lstm(df)
+    predicted_price = predict_with_lstm(df, model, scaler)
     print(f"Predicted Price: {predicted_price}")
 
     # 获取 3Commas 的机器人并更新止盈止损
