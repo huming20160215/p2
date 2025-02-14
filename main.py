@@ -87,8 +87,13 @@ def main():
         print("Failed to fetch historical data.")
         return
 
+    # 将历史数据转换为 DataFrame
+    columns = ['timestamp', 'open', 'high', 'low', 'close', 'volume', 'currency_volume']
+    df = pd.DataFrame(data, columns=columns)
+    df['close'] = df['close'].astype(float)  # 确保 close 列是浮点数
+
     # 预测价格
-    predicted_price = predict_with_lstm(data)
+    predicted_price = predict_with_lstm(df)
     print(f"Predicted Price: {predicted_price}")
 
     # 获取 3Commas 的机器人并更新止盈止损
@@ -99,8 +104,14 @@ def main():
             # 根据预测价格调整止盈止损
             take_profit = predicted_price * 1.02  # 2% 止盈
             stop_loss = predicted_price * 0.98   # 2% 止损
-            three_commas_client.update_take_profit_and_stop_loss(bot_id, take_profit, stop_loss)
-            print(f"Updated bot {bot_id} with TP: {take_profit}, SL: {stop_loss}")
+            # 更新机器人止盈止损
+            result = three_commas_client.update_take_profit_and_stop_loss(bot_id, take_profit, stop_loss)
+            if result:
+                print(f"Updated bot {bot_id} with TP: {take_profit}, SL: {stop_loss}")
+            else:
+                print(f"Failed to update bot {bot_id}")
+    else:
+        print("No bots found.")
 
 if __name__ == '__main__':
     main()
